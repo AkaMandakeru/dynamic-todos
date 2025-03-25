@@ -1,0 +1,23 @@
+<%= turbo_frame_tag dom_id(todo) do %>
+  <div class="flex items-center gap-2 p-2 border rounded mb-2 group">
+    <%= form_with(model: todo, class: "flex-1 flex items-center gap-2") do |f| %>
+      <%= f.check_box :completed,
+          class: "h-5 w-5",
+          onchange: "this.form.requestSubmit()" %>
+      
+      <% if todo.completed %>
+        <span class="flex-1 line-through text-gray-500"><%= todo.title %></span>
+      <% else %>
+        <%= f.text_field :title,
+            class: "flex-1 p-1 border-none focus:ring-2 focus:ring-blue-500 rounded",
+            data: { todo_edit: true } %>
+      <% end %>
+    <% end %>
+
+    <%= button_to todo_path(todo),
+        method: :delete,
+        class: "text-red-500 hover:text-red-700 opacity-0 group-hover:opacity-100 transition-opacity" do %>
+      Delete
+    <% end %>
+  </div>
+<% end %>
