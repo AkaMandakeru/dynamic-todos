@@ -1,0 +1,71 @@
+<!-- GraphQL Demo Page -->
+<div class="container mx-auto p-4">
+  <h1 class="text-2xl font-bold mb-4">GraphQL Todo API Demo</h1>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <!-- Query Section -->
+    <div class="border p-4 rounded">
+      <h2 class="text-xl font-semibold mb-2">Queries</h2>
+      
+      <div class="mb-4">
+        <button id="getRootTodos" class="bg-blue-500 text-white px-4 py-2 rounded">Get Root Todos</button>
+        <button id="getCompletedTodos" class="bg-green-500 text-white px-4 py-2 rounded ml-2">Get Completed Todos</button>
+      </div>
+      
+      <div id="queryResults" class="bg-gray-100 p-4 rounded h-64 overflow-auto">
+        <p class="text-gray-500">Results will appear here...</p>
+      </div>
+    </div>
+    
+    <!-- Mutation Section -->
+    <div class="border p-4 rounded">
+      <h2 class="text-xl font-semibold mb-2">Mutations</h2>
+      
+      <div class="mb-4">
+        <h3 class="font-medium">Create Todo</h3>
+        <div class="flex gap-2 mb-2">
+          <input type="text" id="newTodoTitle" placeholder="Todo title" class="border p-2 rounded flex-1">
+          <button id="createTodo" class="bg-purple-500 text-white px-4 py-2 rounded">Create</button>
+        </div>
+      </div>
+      
+      <div class="mb-4">
+        <h3 class="font-medium">Create Subtask</h3>
+        <div class="flex gap-2 mb-2">
+          <input type="text" id="parentId" placeholder="Parent ID" class="border p-2 rounded w-24">
+          <input type="text" id="subtaskTitle" placeholder="Subtask title" class="border p-2 rounded flex-1">
+          <button id="createSubtask" class="bg-indigo-500 text-white px-4 py-2 rounded">Create</button>
+        </div>
+      </div>
+      
+      <div class="mb-4">
+        <h3 class="font-medium">Update Todo</h3>
+        <div class="flex gap-2 mb-2">
+          <input type="text" id="updateTodoId" placeholder="Todo ID" class="border p-2 rounded w-24">
+          <input type="text" id="updateTodoTitle" placeholder="New title" class="border p-2 rounded flex-1">
+          <button id="updateTodo" class="bg-yellow-500 text-white px-4 py-2 rounded">Update</button>
+        </div>
+      </div>
+      
+      <div class="mb-4">
+        <h3 class="font-medium">Complete Todo</h3>
+        <div class="flex gap-2 mb-2">
+          <input type="text" id="completeTodoId" placeholder="Todo ID" class="border p-2 rounded flex-1">
+          <button id="completeTodo" class="bg-green-500 text-white px-4 py-2 rounded">Mark Complete</button>
+        </div>
+      </div>
+      
+      <div class="mb-4">
+        <h3 class="font-medium">Delete Todo</h3>
+        <div class="flex gap-2 mb-2">
+          <input type="text" id="deleteTodoId" placeholder="Todo ID" class="border p-2 rounded flex-1">
+          <button id="deleteTodo" class="bg-red-500 text-white px-4 py-2 rounded">Delete</button>
+        </div>
+      </div>
+      
+      <div id="mutationResults" class="bg-gray-100 p-4 rounded h-32 overflow-auto">
+        <p class="text-gray-500">Results will appear here...</p>
+      </div>
+    </div>
+  </div>
+</div>

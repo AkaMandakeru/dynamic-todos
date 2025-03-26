@@ -5,14 +5,17 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
   resources :todos
   root "todos#index"
 
   namespace :api do
     post "subtasks/:parent_id", to: "subtasks#create"
+  end
+
+  post "/graphql", to: "graphql#execute"
+  get "/graphql-demo", to: "graphql_demo#index"
+  
+  if Rails.env.development?
+    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end
 end
