@@ -10,5 +10,9 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   resources :todos
-  root 'todos#index'
+  root "todos#index"
+
+  namespace :api do
+    post "subtasks/:parent_id", to: "subtasks#create"
+  end
 end

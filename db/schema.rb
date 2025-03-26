@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_25_103039) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_25_202812) do
   create_table "todos", force: :cascade do |t|
     t.string "title", null: false
     t.boolean "completed", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position", default: 0, null: false
+    t.integer "parent_id"
+    t.index ["position"], name: "index_todos_on_position"
   end
 end

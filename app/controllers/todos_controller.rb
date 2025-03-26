@@ -1,22 +1,29 @@
 class TodosController < ApplicationController
   def index
-    @todos = Todo.all
+    @todos = Todo.root_tasks
     @filtered_todos = case params[:filter]
-                      when 'completed'
-                        @todos.where(completed: true)
-                      when 'pending'
-                        @todos.where(completed: false)
-                      else
-                        @todos
-                      end
+                     when 'completed'
+                       @todos.where(completed: true)
+                     when 'pending'
+                       @todos.where(completed: false)
+                     else
+                       @todos
+                     end
     # render json: @filtered_todos
   end
 
   def create
-    @todo = Todo.new(todo_params)
+    @todo = if params[:todo][:parent_id].present?
+              Todo.find(params[:todo][:parent_id]).subtasks.new(todo_params)
+            else
+              Todo.new(todo_params)
+            end
 
     if @todo.save
-      redirect_to todos_path, notice: 'Todo created successfully'
+      respond_to do |format|
+        format.html { redirect_to todos_path, notice: 'Todo created successfully' }
+        format.json { render partial: 'todo', locals: { todo: @todo }, formats: [:html] }
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -45,6 +52,6 @@ class TodosController < ApplicationController
   private
 
   def todo_params
-    params.require(:todo).permit(:title, :completed)
+    params.require(:todo).permit(:title, :completed, :parent_id)
   end
 end
