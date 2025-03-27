@@ -73,7 +73,7 @@ production:
   primary:
     <<: *default
     database: dynamic_todo_production
-    username: dynamic_todo
+    username: <%= ENV["DYNAMIC_TODO_DATABASE_USERNAME"] %>
     password: <%= ENV["DYNAMIC_TODO_DATABASE_PASSWORD"] %>
   cache:
     <<: *default
