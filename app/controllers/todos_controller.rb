@@ -21,8 +21,8 @@ class TodosController < ApplicationController
 
     if @todo.save
       respond_to do |format|
-        format.html { redirect_to todos_path, notice: 'Todo created successfully' }
-        format.json { render partial: 'todo', locals: { todo: @todo }, formats: [:html] }
+        format.html { redirect_to todos_path, notice: "Todo created successfully" }
+        format.json { render partial: "todo", locals: { todo: @todo }, formats: [ :html ] }
       end
     else
       render :new, status: :unprocessable_entity
