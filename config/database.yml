@@ -72,7 +72,9 @@ test:
 production:
   primary:
     <<: *default
-    url: <%= ENV['DATABASE_URL'] %>
+    database: dynamic_todo_production
+    username: <%= ENV["DYNAMIC_TODO_DATABASE_USERNAME"] %>
+    password: <%= ENV["DYNAMIC_TODO_DATABASE_PASSWORD"] %>
   cache:
     <<: *default
     database: dynamic_todo_cache_production
