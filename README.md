@@ -73,7 +73,7 @@ bundle exec rspec
 ## Deployment
 
 This application is deployed on Heroku. The production version can be accessed at:
-[https://your-app-name.herokuapp.com](https://your-app-name.herokuapp.com)
+[https://dashboard.heroku.com/apps/dynamic-todo/settings](https://dashboard.heroku.com/apps/dynamic-todo/settings)
 
 ### Deployment Process
 1. Ensure your changes are committed to Git
