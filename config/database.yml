@@ -72,27 +72,27 @@ test:
 production:
   primary:
     <<: *default
-    database: dynamic_todo_production
+    database: <%= ENV['DATABASE_NAME'] %>
     host: <%= ENV['DATABASE_HOST'] %>
     username: <%= ENV['DYNAMIC_TODO_DATABASE_USERNAME'] %>
     password: <%= ENV['DYNAMIC_TODO_DATABASE_PASSWORD'] %>
   cache:
     <<: *default
-    database: dynamic_todo_cache_production
+    database: <%= ENV['DATABASE_NAME'] %>
     host: <%= ENV['DATABASE_HOST'] %>
     username: <%= ENV['DYNAMIC_TODO_DATABASE_USERNAME'] %>
     password: <%= ENV['DYNAMIC_TODO_DATABASE_PASSWORD'] %>
     migrations_paths: db/cache_migrate
   queue:
     <<: *default
-    database: dynamic_todo_queue_production
+    database: <%= ENV['DATABASE_NAME'] %>
     host: <%= ENV['DATABASE_HOST'] %>
     username: <%= ENV['DYNAMIC_TODO_DATABASE_USERNAME'] %>
     password: <%= ENV['DYNAMIC_TODO_DATABASE_PASSWORD'] %>
     migrations_paths: db/queue_migrate
   cable:
     <<: *default
-    database: dynamic_todo_cable_production
+    database: <%= ENV['DATABASE_NAME'] %>
     host: <%= ENV['DATABASE_HOST'] %>
     username: <%= ENV['DYNAMIC_TODO_DATABASE_USERNAME'] %>
     password: <%= ENV['DYNAMIC_TODO_DATABASE_PASSWORD'] %>
