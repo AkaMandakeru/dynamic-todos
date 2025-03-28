@@ -13,8 +13,8 @@ module Types
       context.schema.object_from_id(id, context)
     end
 
-    field :nodes, [Types::NodeType, null: true], null: true, description: "Fetches a list of objects given a list of IDs." do
-      argument :ids, [ID], required: true, description: "IDs of the objects."
+    field :nodes, [ Types::NodeType, null: true ], null: true, description: "Fetches a list of objects given a list of IDs." do
+      argument :ids, [ ID ], required: true, description: "IDs of the objects."
     end
 
     def nodes(ids:)
@@ -24,13 +24,13 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
-    field :todos, [Types::TodoType], null: false,
+    field :todos, [ Types::TodoType ], null: false,
       description: "Returns a list of todos"
     def todos
       Todo.all
     end
 
-    field :root_todos, [Types::TodoType], null: false,
+    field :root_todos, [ Types::TodoType ], null: false,
       description: "Returns a list of root todos (without parent)"
     def root_todos
       Todo.root_tasks
@@ -44,23 +44,23 @@ module Types
       Todo.find(id)
     end
 
-    field :filtered_todos, [Types::TodoType], null: false do
+    field :filtered_todos, [ Types::TodoType ], null: false do
       description "Returns filtered todos"
       argument :filter, String, required: false
     end
     def filtered_todos(filter: nil)
       todos = Todo.root_tasks
       case filter
-      when 'completed'
+      when "completed"
         todos.where(completed: true)
-      when 'pending'
+      when "pending"
         todos.where(completed: false)
       else
         todos
       end
     end
 
-    field :subtasks, [Types::TodoType], null: false do
+    field :subtasks, [ Types::TodoType ], null: false do
       description "Returns subtasks for a todo"
       argument :parent_id, ID, required: true
     end

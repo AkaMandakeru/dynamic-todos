@@ -17,7 +17,7 @@ module GraphQLTestHelpers
       context: context
     )
   end
-  
+
   # Parse GraphQL response and handle errors
   def parse_graphql_response(response)
     if response["errors"]

@@ -4,7 +4,7 @@ module Mutations
     argument :title, String, required: true
 
     field :subtask, Types::TodoType, null: true
-    field :errors, [String], null: false
+    field :errors, [ String ], null: false
 
     def resolve(parent_id:, title:)
       parent = Todo.find(parent_id)

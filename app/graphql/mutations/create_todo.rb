@@ -3,7 +3,7 @@ module Mutations
     argument :input, Types::TodoInput, required: true
 
     field :todo, Types::TodoType, null: true
-    field :errors, [String], null: false
+    field :errors, [ String ], null: false
 
     def resolve(input:)
       new_todo = Todo.new(

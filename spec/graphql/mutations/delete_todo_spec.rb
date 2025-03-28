@@ -38,7 +38,7 @@ RSpec.describe Mutations::DeleteTodo, type: :graphql do
     it 'deletes a parent todo and all its subtasks' do
       parent = create(:todo, :with_subtasks)
       subtask_count = parent.subtasks.count
-      
+
       input_variables = {
         input: {
           id: parent.id.to_s

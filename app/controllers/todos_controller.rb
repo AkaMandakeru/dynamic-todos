@@ -2,22 +2,22 @@ class TodosController < ApplicationController
   def index
     @todos = Todo.root_tasks
     @filtered_todos = case params[:filter]
-                     when 'completed'
+    when "completed"
                        @todos.where(completed: true)
-                     when 'pending'
+    when "pending"
                        @todos.where(completed: false)
-                     else
+    else
                        @todos
-                     end
+    end
     # render json: @filtered_todos
   end
 
   def create
     @todo = if params[:todo][:parent_id].present?
               Todo.find(params[:todo][:parent_id]).subtasks.new(todo_params)
-            else
+    else
               Todo.new(todo_params)
-            end
+    end
 
     if @todo.save
       respond_to do |format|
