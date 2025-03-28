@@ -70,26 +70,5 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  primary:
-    <<: *default
-    database: dynamic_todo_production
-    username: <%= ENV["DYNAMIC_TODO_DATABASE_USERNAME"] %>
-    password: <%= ENV["DYNAMIC_TODO_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *default
-    database: dynamic_todo_cache_production
-    username: dynamic_todo
-    password: <%= ENV["DYNAMIC_TODO_DATABASE_PASSWORD"] %>
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *default
-    database: dynamic_todo_queue_production
-    username: dynamic_todo
-    password: <%= ENV["DYNAMIC_TODO_DATABASE_PASSWORD"] %>
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *default
-    database: dynamic_todo_cable_production
-    username: dynamic_todo
-    password: <%= ENV["DYNAMIC_TODO_DATABASE_PASSWORD"] %>
-    migrations_paths: db/cable_migrate
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
